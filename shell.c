@@ -3,7 +3,7 @@
 void shell(int a[],int n)
 {
 	int i,j,k,temp;
-	for(i=n/2;i>=0;i/=2)
+	for(i=n/2;i>0;i/=2)
 	{
 		for(j=i;j<n;j++)
 		{
