@@ -24,6 +24,10 @@ node *insert(node *head, node *new)
 	{
 		t->r=new;
 	}
+	else if(t->r->l==NULL || t->r->r==NULL)
+	{
+	    	insert(t->r,new);
+	}
 	else
 	{
 		insert(t->l,new);
