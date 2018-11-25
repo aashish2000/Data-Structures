@@ -2,36 +2,32 @@
 #include <stdlib.h>
 
 int adj[20][20];
-int q[20],f=-1,r=-1,indeg[20],i,vertices,topsrt[20];
+int s[20],top=-1,indeg[20],i,vertices,topsrt[20];
 
 int add(int n)
 {
-	if(r==19)
+	if(top==19)
 	{
-		printf("Queue Overflow\n");
-	}
-	else if(f==-1)
-	{
-		q[++r]=n;
-		f++;
+		return(0);
 	}
 	else
 	{
-		q[++r]=n;
+		s[++top]=n;
+		return(1);
 	}
-	return(1);
 }
 
 int del()
 {
-	if(f==-1 || f>r)
+	if(top==-1)
 	{
-		printf("Queue Underflow\n");
+		return(0);
 	}
 	else
 	{
-		int a=q[f++];
-		return(a);
+		int k;
+		k=s[top--];
+		return(k);
 	}
 }
 
@@ -51,7 +47,7 @@ int indegree(int n)
 
 int isEmpty()
 {
-	if(f>r || f==-1)
+	if(top==-1)
 	{
 		return(1);
 	}
@@ -64,15 +60,15 @@ int isEmpty()
 void create_graph()
 {
 	int count, maximum_edges, origin_vertex, destination_vertex;
-	printf("Enter number of vertices:\t");
+	printf("Enter number of vertices: ");
 	scanf("%d", &vertices);
 	maximum_edges = vertices * (vertices - 1);
 	for(count = 1; count <= maximum_edges; count++)
 	{
 		printf("Enter Edge [%d] co-ordinates (-1 -1 to quit)\n", count);
-		printf("Enter Origin Vertex:\t");
+		printf("Enter Origin Vertex: ");
 		scanf("%d", &origin_vertex);
-		printf("Enter Destination Vertex:\t");
+		printf("Enter Destination Vertex: ");
 		scanf("%d", &destination_vertex);
 		if((origin_vertex == -1) && (destination_vertex == -1))
 		{
@@ -89,15 +85,13 @@ void create_graph()
 int main()
 {
 	create_graph();
-	printf("Vertices:%d\n",vertices);
+	printf("No of Vertices:%d\n",vertices);
 	int i;
 	for(i=0;i<vertices;i++)
 	{
 		indeg[i]=indegree(i);
-		printf("AAAAAAAAA%d %d\n",i,indeg[i]);
 		if(indeg[i]==0)
 		{
-			printf("YYYYYYYYYYYY%d %d\n",i,indeg[i]);
 			add(i);
 		}
 	}
@@ -106,7 +100,6 @@ int main()
 	while(!isEmpty() && count<vertices)
 	{
 		k=del();
-		printf("BBXBBBBB%d\n",k);
 		topsrt[++count]=k;
 		for(i=0;i<vertices;i++)
 		{

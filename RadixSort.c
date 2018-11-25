@@ -57,15 +57,15 @@ void radsort(int a[],int n)
 }
 void main()
 {
-	int a[4]={78,9,90,56};
+	int a[5]={78,9,90,56,10};
 	printf("Before Sort:\n");
 	int i;
-	for(i=0;i<4;i++)
+	for(i=0;i<5;i++)
 	{
 		printf("%d ",a[i]);
 	}
 	printf("\n");
-	int n=4;
+	int n=5;
 	radsort(a,n);
 
 }

@@ -158,7 +158,7 @@ void main()
 			scanf("%d",&a[i][j]);
 		}
 	}
-	printf("THE ADJACENCY MATRIX IS\n");
+	printf("Adjacency Matrix: \n");
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
@@ -173,8 +173,8 @@ void main()
 		for(i=1;i<=n;i++)
 		vis[i]=0;
 		printf("\nMENU");
-		printf("\n1.B.F.S");
-		printf("\n2.D.F.S");
+		printf("\n1. BFS");
+		printf("\n2. DFS");
 		printf("\nChoice: ");
 		scanf("%d",&ch);
 		printf("\nENTER THE SOURCE VERTEX :");
@@ -190,7 +190,7 @@ void main()
 			break;
 		}
 		}
-		printf("\nDO U WANT TO CONTINUE(Y/N) ? ");
+		printf("\nContinue(Y/N) ? ");
 		scanf("%c",&dummy);
 		scanf("%c",&c);
 	}while((c=='y')||(c=='Y'));

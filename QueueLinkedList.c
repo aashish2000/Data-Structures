@@ -24,11 +24,6 @@ void enq(int n)
 	{
 		r->next=new;
 		r=r->next;
-		if(f->next==NULL)
-		{
-			printf("TTTTTTTT\n");
-		}
-		printf("Yes:%d\n",f->next->val);
 	}
 }
 
@@ -42,17 +37,19 @@ void deq()
 		printf("%d\n",p->val);
 		free(p);
 	}
+	else
+	{
+		printf("Queue is Empty\n");
+	}
 }
 void main()
 {
 	enq(2);
 	enq(4);
 	enq(6);
-	printf("%d\n",f->val);
-	printf("%d\n",f->next->val);
-	printf("%d\n",f->next->next->val);
 
-	/*deq();
+
 	deq();
-	deq();	*/
+	deq();
+	deq();
 }

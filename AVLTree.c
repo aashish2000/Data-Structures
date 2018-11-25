@@ -165,6 +165,73 @@ node *insert(node *t,int x)
 	return(t);
 }
 
+node *Delete(node *T,int x)
+{
+    node *p;
+    
+    if(T==NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        if(x > T->data)
+        {
+            T->right=Delete(T->right,x);
+            if(BF(T)==2)
+            {
+                if(BF(T->left)>=0)
+                    T=LL(T);
+                else
+                    T=LR(T);
+            }
+        }
+        else
+        {
+            if(x<T->data)
+            {
+                T->left=Delete(T->left,x);
+                if(BF(T)==-2)
+                {
+                    if(BF(T->right)<=0)
+                        T=RR(T);
+                    else
+                        T=RL(T);
+                }
+            }
+	        else
+	        {
+	            if(T->right!=NULL)
+	            {
+	                p=T->right;
+	                
+	                while(p->left!= NULL)
+	                {
+	                    p=p->left;
+	                }
+	                
+	                T->data=p->data;
+	                T->right=Delete(T->right,p->data);
+	                
+	                if(BF(T)==2)
+	                {
+	                    if(BF(T->left)>=0)
+	                        T=LL(T);
+	                    else
+	                        T=LR(T);
+	                }
+	            }
+	            else
+	                return(T->left);
+	        }
+	    }
+	}
+    T->ht=height(T);
+    return(T);
+}
+
+
+
 void preorder(node *T)
 {
     if(T!=NULL)
@@ -220,10 +287,10 @@ int main()
                     root=insert(root,x);
                     break;
                     
-            /*case 3: printf("\nEnter a data:");
+            case 3: printf("\nEnter a data:");
                     scanf("%d",&x);
                     root=Delete(root,x);
-                    break;*/
+                    break;
             
             case 4: printf("\nPreorder sequence:\n");
                     preorder(root);

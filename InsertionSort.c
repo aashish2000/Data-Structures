@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-void main()
+void insertionSort(int a[],int n)
 {
-	int i,j,temp;
-	int a[7]={4,5,1,6,9,3,7};
 	for(i=1;i<7;i++)
 	{
 		temp=a[i];
@@ -20,5 +18,12 @@ void main()
 	{
 		printf("%d ",a[i]);
 	}
+}
+
+void main()
+{
+	int i,j,temp;
+	int a[7]={4,5,1,6,9,3,7};
+	insertionSort(a,7);
 }
 
